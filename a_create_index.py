@@ -10,6 +10,9 @@ client_info = es.info()
 
 if __name__ == "__main__":
     # create an index and configure it with number of shards and replicas: my_index
+    # for the sake of practicing and to avoid creating multiple index,
+    # we will delete an exisiting index before creating a new one
+    es.indices.delete(index='my_index', ignore_unavailable=True)
     es.indices.create(
         index="my_index",
         settings={
@@ -19,3 +22,4 @@ if __name__ == "__main__":
             }
         },
     )
+    

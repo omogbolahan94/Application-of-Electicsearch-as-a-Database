@@ -1,5 +1,5 @@
 import json
-from create_index_1 import es
+from a_create_index import es
 
 dummy_data = json.load(open("data/dummy_data.json"))
 # print the data
@@ -16,9 +16,14 @@ def print_info(response):
           response["result"]}' and is split into {response['_shards']['total']} shards.""")
 
 
+document_ids = []
 for document in dummy_data:
     response = insert_document(document)
-    print_info(response)
+    # print_info(response)
+    # cache the ids of each document which will be used for delete operation: an hashed value
+    document_ids.append(response['_id'])
+
+print(document_ids, '\n')
 
 # print the mapping of the data inserred into my_index to see their data types:
 # index_mapping = es.indices.get_mapping(index='my_index')

@@ -17,13 +17,15 @@ def print_info(response):
 
 
 document_ids = []
-for document in dummy_data:
-    response = insert_document(document)
-    # print_info(response)
-    # cache the ids of each document which will be used for delete operation: an hashed value
-    document_ids.append(response['_id'])
 
-print(document_ids, '\n')
+if __name__ == "__main__":
+    for document in dummy_data:
+        response = insert_document(document)
+        # print_info(response)
+        # cache the ids of each document which will be used for delete operation: an hashed value
+        document_ids.append(response['_id'])
+
+    print(document_ids, '\n')
 
 # print the mapping of the data inserred into my_index to see their data types:
 # index_mapping = es.indices.get_mapping(index='my_index')

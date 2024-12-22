@@ -3,7 +3,9 @@ from b_insert_doc import document_ids
 
 # count the number of document in an index
 response = es.count(index='my_index')
-print(response.body)
+count = response["count"]
+
+print(f"The number of documents in the index is {count}")
 
 # using an optional query parameter to count the number of document that matches the query argument
 # for instance: find document whose created_on columns is less than and greater a specific date
@@ -19,3 +21,4 @@ query = {
 
 response = es.count(index='my_index', query=query)
 count = response["count"]
+print(f"The number of documents in the index is {count}")

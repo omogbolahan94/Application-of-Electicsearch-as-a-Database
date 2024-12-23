@@ -35,7 +35,7 @@ response = es.search(
 n_hits = response['hits']['total']['value']
 print(f"\nFound {n_hits} documents in my_index")
 
-# Leaf search (match): search any document (with a field as text data type) that contains the word 'document'
+# Leaf search (match): search any document that contains the word 'document' in its text field with text data type
 response = es.search(
     index='my_index',
     body={
